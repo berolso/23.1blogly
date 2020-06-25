@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block title %}{{user.first_name}}
+{{user.last_name}}{% endblock %} {% block content %}
+
+<div class="col-md-4 mr-auto">
+  <a href="/">All Users</a>
+</div>
+
+<div class="row align-items-end">
+  <img
+    class="card-img-top col-sm-3"
+    src="{{user.image_url}}"
+    alt="Card image cap"
+  />
+  <div class="col-sm-9 ">
+    <h3 class="card-title">{{user.full_name}}</h3>
+    <!-- <div class="container mr-auto"> -->
+      <form>
+        <button class="btn btn-primary btn-sm"
+                formaction="/users/{{ user.id }}/edit"
+                formmethod="GET">Edit
+        </button>
+        <button class="btn btn-danger btn-sm"
+                formaction="/users/{{ user.id }}/delete"
+                formmethod="POST">Delete
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+  
+{%endblock%}

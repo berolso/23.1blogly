@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}TITLE GOES HERE{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="/static/css.css" />
+    <script src="http://unpkg.com/jquery"></script>
+  </head>
+  <body>
+    <div class="card-body">
+      {% block content %}BODY CONTENT GOES HERE{% endblock %}
+      <footer>Copyright by Willakenzi.</footer>
+    </div>
+  </body>
+</html>
