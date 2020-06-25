@@ -22,9 +22,9 @@ def home():
 
 @app.route('/users')
 def list_users():
+  # order users list by last and first name
   users = User.query.order_by(User.last_name, User.first_name).all()
   # users = User.query.all()
-  print('*******',users)
   return render_template('index.html', users=users)
 
 @app.route('/users/new')
