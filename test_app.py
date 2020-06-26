@@ -17,7 +17,6 @@ class UserViewsTestCase(TestCase):
       app.config['TESTING'] = True
 
       # # Create all tables
-      db.drop_all()
       db.create_all()
 
       # # If table isn't empty, empty it
