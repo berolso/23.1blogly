@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block title %}Users{% endblock %} {% block content
+%}
+<h1>Posts</h1>
+{% if posts %}
+<ul>
+  {% for post in posts %}
+  <li>
+    <div class="row">
+      <div class="col-3">
+        <a href="/posts/{{post.id}}">{{post.title}}</a>
+      </div>
+      <div class="col">
+        <a href="/posts/{{post.id}}">{{post.friendly_date}}</a>
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+<div>
+  <a class="btn btn-sm btn-primary" href="/users">All Users</a>
+</div>
+{% endblock %}

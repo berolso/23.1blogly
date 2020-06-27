@@ -16,16 +16,21 @@ app.config['SECRET_KEY'] = "SECRET!"
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 debug = DebugToolbarExtension(app)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404
+
 @app.route('/')
 def home():
-  return redirect('/users')
+  return redirect('/posts')
 
 @app.route('/users')
 def list_users():
   # order users list by last and first name
   users = User.query.order_by(User.last_name, User.first_name).all()
   # users = User.query.all()
-  return render_template('index.html', users=users)
+  return render_template('users.html', users=users)
 
 @app.route('/users/new')
 def create_new_user():
@@ -114,3 +119,7 @@ def post_delete_post(post_id):
   db.session.commit()
   return redirect(f'/users/{post.user_id}')
 
+@app.route('/posts')
+def list_posts():
+  posts = Post.query.order_by(Post.created_at, Post.title).limit(5) 
+  return render_template('posts.html', posts=posts)

@@ -19,7 +19,7 @@ class User(db.Model):
   last_name = db.Column(db.String, nullable=False)
   image_url = db.Column(db.String, default='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSezD4QP_WuZR9_mTWxGPHcnB9NdjLwYJ43iA&usqp=CAU')
 
-  post = db.relationship('Post', backref='user')
+  post = db.relationship('Post', backref='user',cascade="all, delete-orphan")
 
   @property
   def full_name(self):
@@ -36,7 +36,12 @@ class Post(db.Model):
   title = db.Column(db.String, nullable=False)
   content = db.Column(db.Text, nullable=False)
   created_at = db.Column(db.Date, nullable=False,default=dt.today())
-  user_id = db.Column(db.Integer, db.ForeignKey('users.id')) 
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id'),nullable=False) 
+
+  @property
+  def friendly_date(self):
+    """Return nicely-formatted date."""
+    return self.created_at.strftime("%a %b %-d %Y")
 
   def __repr__(self):
 	  return f'<Post | {self.id} | {self.title} | {self.created_at}>'

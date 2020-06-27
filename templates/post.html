@@ -2,10 +2,7 @@
 {{post.user.last_name}}{% endblock %} {% block content %}
 
 <div class="col-md-3">
-  <a href="/">All Users</a>
-</div>
-<div class="col-md-3">
-  <a href="/users/{{post.user_id}}">Me</a>
+  <a href="/users/{{post.user_id}}"> More by {{post.user.full_name}}</a>
 </div>
 
 <div class="row align-items-end">

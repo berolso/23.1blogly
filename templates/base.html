@@ -10,6 +10,17 @@
     <script src="http://unpkg.com/jquery"></script>
   </head>
   <body>
+    <nav class="navbar sticky-top navbar-dark bg-primary">
+      <a class="navbar-brand" href="/users">Users</a>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/posts"
+            >Posts <span class="sr-only">(current)</span></a
+          >
+        </li>
+      </ul>
+      <!-- Navbar content -->
+    </nav>
     <div class="card-body">
       {% block content %}BODY CONTENT GOES HERE{% endblock %}
       <footer>Copyright by Willakenzi.</footer>
