@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% block title %}New User{% endblock %} {% block
+content %}
+<h1>Edit Tag</h1>
+<div>
+  <div class="mr-auto" style="width: 70%;">
+    <form method="POST">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name">Name</label>
+          <input
+            name="name"
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="currently '{{tag.name}}'"
+            value="{{tag.name}}"
+            required
+          />
+        </div>
+      </div>
+      <div class="card mb-3 p-3">
+        <p>Tagged posts {%for post in posts%}</p>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <input
+                name="post"
+                {%if
+                post
+                in
+                tag.posts
+                %}
+                checked
+                {%endif%}
+                type="checkbox"
+                value="{{post.title}}"
+                aria-label="Checkbox for following text input"
+              />
+            </div>
+          </div>
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            aria-label="Text input with checkbox"
+            value="{{post.title}}"
+          />
+        </div>
+        {%endfor%}
+      </div>
+
+      <button type="submit" class="btn btn-sm btn-success">Save</button>
+      <button
+        type="submit"
+        class="btn btn-outline-secondary btn-sm"
+        formaction="/tags/{{tag.id}}"
+        formmethod="GET"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

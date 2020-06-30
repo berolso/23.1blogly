@@ -16,6 +16,10 @@
         <em>by {{post.user.full_name}} </em>
         <br />
         {{post.friendly_date}}
+        <br />
+        Tags: {% for tag in post.tags %}
+        <span class="badge badge-info">{{tag.name}}</span>
+        {% endfor%}
       </p>
     </div>
     <form>

@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block title %}New User{% endblock %} {% block
+content %}
+<h1>Create Tag</h1>
+<div>
+  <div class="mr-auto" style="width: 70%;">
+    <form method="POST">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name">Name</label>
+          <input
+            name="name"
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Tag Name Here"
+            required
+          />
+        </div>
+      </div>
+      <div>
+        {%for post in posts%}
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <input
+                type="checkbox"
+                name="post"
+                value="{{post.id}}"
+                aria-label="Checkbox for following text input"
+              />
+            </div>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Text input with checkbox"
+            value="{{post.title}}"
+          />
+        </div>
+        {%endfor%}
+      </div>
+
+      <button class="btn btn-success" formaction="/tags/new" formmethod="POST">
+        Add
+      </button>
+      <a href="/tags" class="btn btn-outline-secondary btn-sm">Cancel</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

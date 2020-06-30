@@ -10,16 +10,29 @@
     <script src="http://unpkg.com/jquery"></script>
   </head>
   <body>
-    <nav class="navbar sticky-top navbar-dark bg-primary">
-      <a class="navbar-brand" href="/users">Users</a>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/posts"
-            >Posts <span class="sr-only">(current)</span></a
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="/posts">Posts</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="/users"
+            >Users <span class="sr-only">(current)</span></a
           >
-        </li>
-      </ul>
+          <a class="nav-item nav-link" href="/tags">tags</a>
+        </div>
+      </div>
     </nav>
+
     {% for category, msg in get_flashed_messages(with_categories=true) %}
     <div class="alert alert-{{ category }} role=alert pb-0">
       <p>{{ msg }}</p>
@@ -29,5 +42,20 @@
       {% block content %}BODY CONTENT GOES HERE{% endblock %}
       <footer>Copyright by Willakenzi.</footer>
     </div>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

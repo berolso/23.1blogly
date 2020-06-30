@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block title %}{{tag}} {{tag}}{% endblock %} {%
+block content %}
+
+<h4>Tag:</h4>
+
+<div class="row align-items-end">
+  <div class="col-sm-9">
+    <h1 class="card-title ml-3">{{tag.name}}</h1>
+    <div class="card mb-3 p-3">
+      <h5>
+        Tagged posts
+      </h5>
+      <ul>
+        {%for post in posts%} {%if post in tag.posts%}
+        <li>
+          {{post.title}}
+        </li>
+        {%endif%} {%endfor%}
+      </ul>
+    </div>
+    <form>
+      <button
+        class="btn btn-primary btn-sm"
+        formaction="/tags/{{tag.id}}/edit"
+        formmethod="GET"
+      >
+        Edit
+      </button>
+      <button
+        class="btn btn-danger btn-sm"
+        formaction="/tags/{{ tag.id }}/delete"
+        formmethod="POST"
+      >
+        Delete
+      </button>
+    </form>
+  </div>
+</div>
+
+<div></div>
+
+{%endblock%}

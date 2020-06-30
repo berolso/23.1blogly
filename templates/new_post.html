@@ -29,6 +29,43 @@ content %}
           required
         ></textarea>
         <small>Post content here</small>
+
+        <div>
+          <div class="btn-group dropup">
+            <button
+              type="button"
+              class="btn btn-secondary dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Tags
+            </button>
+            <div class="dropdown-menu ml-5">
+              {%for tag in tags%}
+              <div class="form-check m-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="Checkbox"
+                  value="{{tag.id}}"
+                  name="name"
+                  {%
+                  if
+                  tag
+                  in
+                  tag.posts.tags%}
+                  checked
+                  {%endif%}
+                />
+                <label class="form-check-label" for="Checkbox"
+                  >{{tag.name}}</label
+                >
+              </div>
+              {%endfor%}
+            </div>
+          </div>
+        </div>
       </div>
       <input
         class="btn btn-outline-secondary btn-sm"
